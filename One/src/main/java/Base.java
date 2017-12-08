@@ -50,10 +50,9 @@ public class Base {
 
             String massif[];
             massif = new String[lengthOfArray];
-            String j = null;
+            String j = ("");
             for (int i=0; i < lengthOfArray; i++) {
                 massif[i] = scan.next();
-                j = massif[i];
                 int l1 = massif[i].length();
                 int l2 = j.length();
                 if ( l1 > l2 ) {
