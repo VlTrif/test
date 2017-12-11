@@ -11,7 +11,7 @@ public class Base {
         Scanner scan = new Scanner(System.in);
 
         int choise;
-        System.out.println("Select option: 1)Calculator , 2)Longest word in massif");
+        System.out.println("Select option:" + "\n" + "1)Calculator" + "\n" +  "2)Longest word in massif" + "\n" + "3)Random massif");
         choise = scan.nextInt(); // Считывание варианта
 
         if (choise == 1 ) {
@@ -52,17 +52,12 @@ public class Base {
             massif = new String[lengthOfArray];
             String j = ("");
             for (int i=0; i < lengthOfArray; i++) {
-                massif[i] = scan.next();
+                massif[i] = scan.next(); // Ввод элементов массива
                 int l1 = massif[i].length();
                 int l2 = j.length();
                 if ( l1 > l2 ) {
                     j = massif[i];
                 }
-//                if ((massif[i].compareTo(j)) > 0) {
-//                    j = massif[i];
-//                }
-                //System.out.println(l);
-               // if list.get(massif[i] > j)
 
             }
             System.out.println(j);
@@ -70,6 +65,41 @@ public class Base {
 
 
         }
-//        scan.close();
+        scan.close();
+
+        if (choise == 3) {
+            System.out.println("Random massif: ");
+            int[] randomMassif = new int[20];
+            for (int i = 0; i < 20; i++){
+                randomMassif[i] = (int)(Math.random()*21 - 10);  //Генерация рандомного массива
+            }
+            String randomMassifStr = Arrays.toString(randomMassif);
+            System.out.println(randomMassifStr);
+
+            int rM_min = 0;
+            int rM_max = 0;
+            for (int j = 1; j < 20; j++){ // Поиск индексов максимального и минимального элементов
+                if (randomMassif[j] > randomMassif[rM_max]){
+                    rM_max = j;
+                } else if (randomMassif[j] < randomMassif[rM_min]){
+                    rM_min = j;
+                }
+            }
+
+            int min = randomMassif[rM_min];
+            int max = randomMassif[rM_max];
+            for (int k = 0; k < randomMassif.length; k++) {  // Замена местами min и max элементов
+                if (randomMassif[k] == max) {
+                    randomMassif[k] = min;
+                } else if (randomMassif[k] == min) {
+                    randomMassif[k] = max;
+                }
+            }
+
+            System.out.println("Swapped random massif: ");
+            String randomMassifStrNew = Arrays.toString(randomMassif);
+            System.out.println (randomMassifStrNew);
+        }
+
     }
 }
