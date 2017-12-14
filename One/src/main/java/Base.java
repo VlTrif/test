@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 
 /**
@@ -11,7 +12,8 @@ public class Base {
         Scanner scan = new Scanner(System.in);
 
         int choise;
-        System.out.println("Select option:" + "\n" + "1)Calculator" + "\n" +  "2)Longest word in massif" + "\n" + "3)Random massif");
+        System.out.println("Select option:" + "\n" + "1)Calculator" + "\n" +
+                "2)Longest word in massif" + "\n" + "3)Random massif" + "\n" + "4)Christmas gifts");
         choise = scan.nextInt(); // Считывание варианта
 
         if (choise == 1 ) {
@@ -65,7 +67,7 @@ public class Base {
 
 
         }
-        scan.close();
+
 
         if (choise == 3) {
             System.out.println("Random massif: ");
@@ -99,6 +101,60 @@ public class Base {
             System.out.println("Swapped random massif: ");
             String randomMassifStrNew = Arrays.toString(randomMassif);
             System.out.println (randomMassifStrNew);
+        }
+
+        if (choise == 4){
+
+            String[] goods = {
+                    "1. Мандарины",
+                    "2. Шампанское",
+                    "3. Конфетти",
+                    "4. Печенье с топленым молоком",
+                    "5. Конфеты шоколадные"};
+            int[] id = {1, 2, 3, 4, 5};
+            int[] weight = {200, 250, 15, 85, 99};
+            int[] cost = {199, 399, 50, 150, 100};
+
+            System.out.println("Select product: ");
+
+            for (int s = 0; s < goods.length; s++) {
+                System.out.println(goods[s]);
+            }
+
+            int totalCost = 0;
+            int totalWeight = 0;
+
+            System.out.println("Enter product number. To finish enter 0");
+            ArrayList<Integer> products = new ArrayList<Integer>();
+            for (; ;){
+                int i = scan.nextInt();
+                int p = 0;
+                while (p < id.length) {
+                    if (i == id[p]){
+                        products.add(i);
+                        totalCost += cost[p];
+                        totalWeight += weight[p];
+                    }
+                    p++;
+                }
+                if (i == 0){
+                    break;
+                }
+            }
+            scan.close();
+
+            System.out.println("Your basket : ");
+            for (int prBasket = 0; prBasket < products.size();prBasket++){
+                for (int j =0; j < id.length; j++){
+                    if (products.get(prBasket) == id[j]){
+                        System.out.println(goods[j]);
+                    }
+                }
+            }
+
+            System.out.println("Total weight: " + totalWeight + " gr.");
+
+            System.out.println("Total cost: " +totalCost + " rub.");
         }
 
     }
